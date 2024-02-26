@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import sys
 
 
 def list_files(dir):
@@ -38,12 +39,12 @@ def copy_files(files, dst):
             print(f"Permission error when trying to copy file: {file}")
 
 
-def scan_and_copy(src_dir, dst_dir="dist"):
+def scan_and_copy(src_dir, dst_dir):
     files = list_files(src_dir)
     copy_files(files, dst_dir)
 
 
-if __name__ == "__main__":
+def test_scan_and_copy():
     # testing
     test_src_folder = "./test_src"
     Path.mkdir(Path(test_src_folder))
@@ -67,3 +68,12 @@ if __name__ == "__main__":
     test_dst_folder = "./test_dst"
 
     scan_and_copy(test_src_folder, test_dst_folder)
+
+
+if __name__ == "__main__":
+    src_dir = sys.argv[1]
+    if len(sys.argv)==3:
+        dst_dir = sys.argv[2]
+    else:
+        dst_dir = "dist"
+    scan_and_copy(src_dir, dst_dir)
