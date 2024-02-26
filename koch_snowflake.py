@@ -29,4 +29,5 @@ def draw_koch_snowflake(order, size=300):
 
 
 if __name__ == "__main__":
-    draw_koch_snowflake(6)
+    level = input("Input the desired level of a fractal: ")
+    draw_koch_snowflake(int(level))
